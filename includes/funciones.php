@@ -4,7 +4,7 @@
 //ESTAMOS CARGANDO LAS RUTAS DE LOS TEMPLATES, EN UNA VARIABLE GLOBAL
 define('TEMPLATES_URL', __DIR__ . '\templates');
 //define('FUNCIONES_URL', __DIR__ - 'funciones.php');
-define('CARPETA_IMAGENES', __DIR__.'/../imagenes/');
+define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'].'/imagenes/');
 
 
 //FUNCIÓN PARA HACER DINAMICO EL USO DE LOS TEMPLATES
@@ -60,4 +60,18 @@ function mostrarNotificacion($codigo){
     }
 
     return $mensaje;
+}
+
+
+//VALIDACION DE ID EN LAS URL
+function validarOredireccionar(string $url){
+    //RESTRINGIR EL ID DE LA URL A UN INT
+    $id = $_GET['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    if (!$id) {
+        header("Location: ${url}");
+    }
+
+    return $id;
 }
