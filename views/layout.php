@@ -45,9 +45,9 @@ if (!isset($inicio)) {
                         <a href="/blog">Blog</a>
                         <a href="/contacto">Contacto</a>
                         <?php if($auth): ?>
-                            <a href="/cerrar-sesion">Cerrar sesión</a>
+                            <a href="/logout">Cerrar sesión</a>
                         <?php else: ?>
-                            <a href="/login.php">Iniciar sesión</a>
+                            <a href="/login">Iniciar sesión</a>
                         <?php endif; ?>
                         
                         

@@ -21,6 +21,15 @@ class Router{
 
     //COMPROBACION SI EXISTEN LAS RUTAS/URL
     public function comprobarRutas(){
+
+        
+        session_start();    
+        $auth = $_SESSION['login'] ?? null;//usuario autenticado
+
+        //ARREGLO DE LAS RUTAS PROTEGIDAS
+        $rutas_protegidas = ['/admin', '/propiedad/crear', '/propiedad/actualizar', '/propiedad/eliminar', '/vendedor/crear', '/vendedor/actualizar', '/vendedor/eliminar'];
+
+
         $urlActual = $_SERVER['PATH_INFO'] ?? '/';//ruta actual de la URL
         $metodo = $_SERVER['REQUEST_METHOD']; //metodo
 
@@ -29,6 +38,11 @@ class Router{
             $fn = $this->rutasGET[$urlActual] ?? null;//fn será la funcion de esta RUTA GET
         }else{
             $fn = $this->rutasPOST[$urlActual] ?? null;//fn será la funcion de esta RUTA POST
+        }
+
+        //PROTEGER RUTAS
+        if (in_array($urlActual, $rutas_protegidas) && !$auth) {
+            header('Location: /');
         }
 
         //si existe la funcion
