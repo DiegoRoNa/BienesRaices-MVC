@@ -47,7 +47,7 @@ class LoginController{
 
     //  /logout
     public static function logout(){
-        session_start();
+        //session_start();
 
         $_SESSION = [];//limpiar la sesion
         

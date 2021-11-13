@@ -18,7 +18,7 @@ class Admin extends ActiveRecord{
         $this->password = $args['password'] ?? '';
     }
 
-    public function valiar(){
+    public function validar(){
         if (!$this->email) {
             self::$errores[] = 'El correo es obligatorio';
         }
@@ -32,7 +32,7 @@ class Admin extends ActiveRecord{
 
     //VERIFICAR SI EXISTE EL USUARIO
     public function existeUsuario(){
-        $query = "SELECT * FROM ".self::$tabla." WHERE email = '".$this->email."' LIMIT 1;";
+        $query = "SELECT * FROM " . self::$tabla . " WHERE email = '" . $this->email . "' LIMIT 1";
 
         $resultado = self::$db->query($query);
 
@@ -64,7 +64,7 @@ class Admin extends ActiveRecord{
     //AUTENTICAR
     public function autenticar(){
         
-        session_start();
+        //session_start();
 
         $_SESSION['usuario'] = $this->email;
         $_SESSION['login'] = true;//helper

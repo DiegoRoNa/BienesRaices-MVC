@@ -1,12 +1,12 @@
 <main class="contenedor seccion contenido-centrado">
-    <h1>Iniciar sesión</h1>
+    <h1 data-cy="heading-login">Iniciar sesión</h1>
 
     <!--MOSTRAR ERRORES DE INPUT VACIOS-->
     <?php foreach($errores as $error): ?>
-        <div class="alerta error"><?=$error;?></div>
+        <div data-cy="alerta-login" class="alerta error"><?=$error;?></div>
     <?php endforeach; ?>
     
-    <form class="formulario" method="POST" action="/login">
+    <form data-cy="formulario-login" class="formulario" method="POST" action="/login">
         <fieldset>
             <legend>Correo y contraseña</legend>
 
